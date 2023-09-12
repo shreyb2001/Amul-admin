@@ -71,7 +71,6 @@ const ProductForm = ({ initialData, categories, sizes, colors }) => {
 
   const onSubmit = async (data) => {
     const uploadData = { ...data, owner: params.storeId };
-    console.log(data);
     try {
       setLoading(true);
       if (initialData) {
@@ -83,7 +82,7 @@ const ProductForm = ({ initialData, categories, sizes, colors }) => {
         await axios.post(`/api/${params.storeId}/products`, uploadData);
       }
       router.refresh();
-      router.push(`/${params.storeId}/products`);
+      router.push(`/${params.storeId}/products`, { scroll: false });
       toast.success(toastMessage);
     } catch (error) {
       toast.error("Something went wrong!");

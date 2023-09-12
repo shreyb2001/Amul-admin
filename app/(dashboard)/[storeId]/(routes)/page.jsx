@@ -47,7 +47,7 @@ const DashboardPage = async ({ params }) => {
               <CreditCardIcon className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">+{stocksCount}</div>
+              <div className="text-2xl font-bold">+{salesCount}</div>
             </CardContent>
           </Card>
           <Card>
@@ -58,7 +58,7 @@ const DashboardPage = async ({ params }) => {
               <Package className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{salesCount}</div>
+              <div className="text-2xl font-bold">{stocksCount}</div>
             </CardContent>
           </Card>
           <Card className="col-span-4">

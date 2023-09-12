@@ -19,7 +19,7 @@ const productSchema = new mongoose.Schema(
       default: false,
     },
     isArchived: {
-      type: String,
+      type: Boolean,
       default: false,
     },
     owner: {

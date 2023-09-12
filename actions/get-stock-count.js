@@ -1,10 +1,10 @@
-import Order from "../models/orderModel";
+import Product from "../models/productModel";
 
 export const getStockCount = async (storeId) => {
-  const orders = await Order.find({
-    owner: storeId,
+  const products = await Product.find({
     isArchived: true,
+    owner: storeId,
   });
 
-  return orders.length;
+  return products.length;
 };
