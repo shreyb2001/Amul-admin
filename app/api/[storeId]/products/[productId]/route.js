@@ -42,6 +42,8 @@ export async function PATCH(req, { params }) {
       isArchived,
     } = body;
 
+    console.log(price);
+
     if (!userId) return new NextResponse("Unauthenticated", { status: 401 });
 
     if (!name) return new NextResponse("Name is required", { status: 400 });

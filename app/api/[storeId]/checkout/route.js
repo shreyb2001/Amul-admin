@@ -16,6 +16,7 @@ export async function OPTIONS() {
 
 export async function POST(req, { params }) {
   const { productIds } = await req.json();
+
   if (!productIds || productIds.length === 0) {
     return new NextResponse("Product ids are required", { status: 400 });
   }
