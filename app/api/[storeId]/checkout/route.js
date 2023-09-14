@@ -53,7 +53,7 @@ export async function POST(req, { params }) {
     phone_number_collection: {
       enabled: true,
     },
-    success_url: `${process.env.FRONTEND_STORE_URL}/cart?success=1`,
+    success_url: `https://e-commerce-store-ten-iota.vercel.app/cart?success=1`,
     cancel_url: `${process.env.FRONTEND_STORE_URL}/cart?canceled=1`,
     metadata: {
       orderId: order._id,
