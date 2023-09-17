@@ -6,7 +6,7 @@ import dbConnect from "../../../../lib/mongodb";
 
 export async function POST(req, { params }) {
   await dbConnect();
-  console.log(req.body)
+  console.log(req.body);
 
   try {
     const { userId } = auth();
@@ -54,7 +54,7 @@ export async function GET(req, { params }) {
 
     const categories = await Category.find({
       owner: params.storeId,
-    });
+    }).populate("owner");
 
     return NextResponse.json(categories);
   } catch (error) {
