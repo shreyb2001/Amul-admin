@@ -5,6 +5,7 @@ import Category from "../../../../../models/categoryModel";
 import { format } from "date-fns";
 
 const CategoriesPage = async ({ params }) => {
+  await dbConnect();
   const categories = await Category.find({
     owner: params.storeId,
   })

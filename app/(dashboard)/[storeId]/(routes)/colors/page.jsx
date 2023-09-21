@@ -5,6 +5,7 @@ import Color from "../../../../../models/colorModel";
 import { format } from "date-fns";
 
 const ColorsPage = async ({ params }) => {
+  await dbConnect();
   const colors = await Color.find({
     owner: params.storeId,
   }).sort({ createdAt: 1 });

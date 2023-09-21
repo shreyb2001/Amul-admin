@@ -6,6 +6,7 @@ import OrderClient from "./components/client";
 import { formatter } from "../../../../../lib/utils";
 
 const OrdersPage = async ({ params }) => {
+  await dbConnect();
   const orders = await Order.find({
     owner: params.storeId,
   }).sort({ createdAt: 1 });

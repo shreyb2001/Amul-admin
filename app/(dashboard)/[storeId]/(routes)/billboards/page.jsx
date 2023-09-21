@@ -5,6 +5,7 @@ import Billboard from "../../../../../models/billboardModel";
 import { format } from "date-fns";
 
 const BillboardsPage = async ({ params }) => {
+  await dbConnect();
   const billboards = await Billboard.find({
     owner: params.storeId,
   }).sort({ createdAt: 1 });
@@ -12,7 +13,7 @@ const BillboardsPage = async ({ params }) => {
   const formattedBillboards = billboards.map((item) => ({
     _id: item._id,
     label: item.label,
-    createdAt: format(item.createdAt, "MMMM do, yyyy")
+    createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }));
 
   return (
