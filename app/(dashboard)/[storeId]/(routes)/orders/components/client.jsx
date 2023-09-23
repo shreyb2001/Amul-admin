@@ -1,12 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Heading from "../../../../../../components/ui/heading";
 import { Separator } from "../../../../../../components/ui/separator";
 import { DataTable } from "../../../../../../components/ui/data-table";
 import { columns } from "./columns";
 
 const OrderClient = ({ data }) => {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
 
   return (
     <>

@@ -17,10 +17,12 @@ const SettingsPage = async ({ params }) => {
 
   if (!store) redirect("/");
 
+  const plainObject = JSON.parse(JSON.stringify(store));
+
   return (
     <div className="flex-col ">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <SettingsForm initialData={store} />
+        <SettingsForm initialData={plainObject} />
       </div>
     </div>
   );

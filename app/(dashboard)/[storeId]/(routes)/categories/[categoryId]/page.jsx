@@ -14,10 +14,16 @@ const CategoryPage = async ({ params }) => {
     owner: params.storeId,
   });
 
+  const plainObjectCategory = JSON.parse(JSON.stringify(category));
+  const plainObjectBillboards = JSON.parse(JSON.stringify(billboards));
+
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <CategoryForm billboards={billboards} initialData={category} />
+        <CategoryForm
+          billboards={plainObjectBillboards}
+          initialData={plainObjectCategory}
+        />
       </div>
     </div>
   );

@@ -16,10 +16,12 @@ const BillboardsPage = async ({ params }) => {
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }));
 
+  const plainObject = JSON.parse(JSON.stringify(formattedBillboards));
+
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <BillboardClient data={formattedBillboards} />
+        <BillboardClient data={plainObject} />
       </div>
     </div>
   );

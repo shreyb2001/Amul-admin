@@ -16,10 +16,12 @@ const SizesPage = async ({ params }) => {
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }));
 
+  const plainObject = JSON.parse(JSON.stringify(formattedSizes));
+
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <SizeClient data={formattedSizes} />
+        <SizeClient data={plainObject} />
       </div>
     </div>
   );

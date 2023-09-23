@@ -19,10 +19,12 @@ const CategoriesPage = async ({ params }) => {
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }));
 
+  const plainObject = JSON.parse(JSON.stringify(formattedCategories));
+
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <CategoryClient data={formattedCategories} />
+        <CategoryClient data={plainObject} />
       </div>
     </div>
   );

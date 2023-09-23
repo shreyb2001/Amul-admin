@@ -27,15 +27,19 @@ const ProductPage = async ({ params }) => {
     owner: params.storeId,
   });
 
+  const plainCategories = JSON.parse(JSON.stringify(categories));
+  const plainSizes = JSON.parse(JSON.stringify(sizes));
+  const plainColors = JSON.parse(JSON.stringify(colors));
+
 
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
         <ProductForm
           initialData={plainProduct}
-          categories={categories}
-          sizes={sizes}
-          colors={colors}
+          categories={plainCategories}
+          sizes={plainSizes}
+          colors={plainColors}
         />
       </div>
     </div>

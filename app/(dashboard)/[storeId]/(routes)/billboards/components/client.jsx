@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Heading from "../../../../../../components/ui/heading";
 import { Button } from "../../../../../../components/ui/button";
 import { Plus } from "lucide-react";
@@ -13,6 +13,13 @@ import ApiList from "../../../../../../components/ui/api-list";
 const BillboardClient = ({ data }) => {
   const router = useRouter();
   const params = useParams();
+
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
 
   return (
     <>

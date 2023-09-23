@@ -36,7 +36,6 @@ const formSchema = z.object({
 });
 
 const CategoryForm = ({ initialData, billboards }) => {
-  console.log(initialData)
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const params = useParams();
