@@ -5,6 +5,7 @@ import Heading from "../../../../../../components/ui/heading";
 import { Separator } from "../../../../../../components/ui/separator";
 import { DataTable } from "../../../../../../components/ui/data-table";
 import { columns } from "./columns";
+import { InterminateBar } from "../../../../../../components/ui/progress";
 
 const OrderClient = ({ data }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -12,7 +13,7 @@ const OrderClient = ({ data }) => {
     setIsMounted(true);
   }, []);
 
-  if (!isMounted) return null;
+  if (!isMounted) return <InterminateBar />;
 
   return (
     <>

@@ -1,6 +1,6 @@
 "use client";
 
-import React,{useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Heading from "../../../../../../components/ui/heading";
 import { Button } from "../../../../../../components/ui/button";
 import { Plus } from "lucide-react";
@@ -9,17 +9,18 @@ import { useParams, useRouter } from "next/navigation";
 import { DataTable } from "../../../../../../components/ui/data-table";
 import { columns } from "./columns";
 import ApiList from "../../../../../../components/ui/api-list";
+import { InterminateBar } from "../../../../../../components/ui/progress";
 
 const CategoryClient = ({ data }) => {
   const router = useRouter();
   const params = useParams();
 
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => {
-      setIsMounted(true);
-    }, []);
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-    if (!isMounted) return null;
+  if (!isMounted) return <InterminateBar />;
 
   return (
     <>

@@ -9,6 +9,7 @@ import { useParams, useRouter } from "next/navigation";
 import { DataTable } from "../../../../../../components/ui/data-table";
 import { columns } from "./columns";
 import ApiList from "../../../../../../components/ui/api-list";
+import { InterminateBar } from "../../../../../../components/ui/progress";
 
 const ProductClient = ({ data }) => {
   const router = useRouter();
@@ -19,7 +20,7 @@ const ProductClient = ({ data }) => {
     setIsMounted(true);
   }, []);
 
-  if (!isMounted) return null;
+  if (!isMounted) return <InterminateBar />;
 
   return (
     <>
