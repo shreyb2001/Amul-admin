@@ -2,6 +2,7 @@ import Stripe from "stripe";
 import { NextResponse } from "next/server";
 import Product from "../../../../models/productModel";
 import Order from "../../../../models/orderModel";
+import User from "../../../../models/userModel";
 import { stripe } from "../../../../lib/stripe";
 
 const corsHeaders = {
@@ -15,7 +16,7 @@ export async function OPTIONS() {
 }
 
 export async function POST(req, { params }) {
-  const { productIds } = await req.json();
+  const { productIds, items, data } = await req.json();
 
   if (!productIds || productIds.length === 0) {
     return new NextResponse("Product ids are required", { status: 400 });
@@ -44,6 +45,14 @@ export async function POST(req, { params }) {
     isPaid: false,
     orderItems: products,
   });
+
+  const user = await User.create({
+    name: data.user.name,
+    email: data.user.email,
+    items,
+  });
+
+  console.log(user);
 
   const session = await stripe.checkout.sessions.create({
     line_items,
