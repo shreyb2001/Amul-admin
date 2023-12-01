@@ -36,12 +36,6 @@ const MainNav = ({ className, ...props }) => {
       hover: "Create different sizes for your products!",
     },
     {
-      href: `/${params.storeId}/colors`,
-      label: "Colors",
-      active: pathname === `/${params.storeId}/colors`,
-      hover: "Create different colors for your products!",
-    },
-    {
       href: `/${params.storeId}/products`,
       label: "Products",
       active: pathname === `/${params.storeId}/products`,

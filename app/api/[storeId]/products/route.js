@@ -15,7 +15,6 @@ export async function POST(req, { params }) {
       name,
       price,
       categoryId,
-      colorId,
       sizeId,
       images,
       isFeatured,
@@ -30,9 +29,6 @@ export async function POST(req, { params }) {
 
     if (!categoryId)
       return new NextResponse("Category ID is required", { status: 400 });
-
-    if (!colorId)
-      return new NextResponse("Color ID is required", { status: 400 });
 
     if (!sizeId)
       return new NextResponse("Size ID is required", { status: 400 });
@@ -57,7 +53,6 @@ export async function POST(req, { params }) {
       price,
       owner: params.storeId,
       categoryId,
-      colorId,
       sizeId,
       isFeatured,
       isArchived,
@@ -77,7 +72,6 @@ export async function GET(req, { params }) {
   try {
     const { searchParams } = new URL(req.url);
     const categoryId = searchParams.get("categoryId") || undefined;
-    const colorId = searchParams.get("colorId") || undefined;
     const sizeId = searchParams.get("sizeId") || undefined;
     const isFeatured = searchParams.get("isFeatured") || undefined;
 
@@ -92,9 +86,6 @@ export async function GET(req, { params }) {
       query.categoryId = categoryId;
     }
 
-    if (colorId !== undefined) {
-      query.colorId = colorId;
-    }
 
     if (sizeId !== undefined) {
       query.sizeId = sizeId;
@@ -106,7 +97,6 @@ export async function GET(req, { params }) {
 
     const products = await Product.find(query)
       .populate("categoryId")
-      .populate("colorId")
       .populate("sizeId")
       .sort({ createdAt: 1 });
 

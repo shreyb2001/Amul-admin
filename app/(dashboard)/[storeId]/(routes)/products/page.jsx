@@ -12,7 +12,6 @@ const ProductsPage = async ({ params }) => {
   })
     .populate("categoryId")
     .populate("sizeId")
-    .populate("colorId")
     .sort({ createdAt: 1 });
 
   const formattedProducts = products.map((item) => ({
@@ -24,7 +23,6 @@ const ProductsPage = async ({ params }) => {
     price: item.price,
     category: item.categoryId.name,
     size: item.sizeId.name,
-    color: item.colorId.value,
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }));
 

@@ -39,7 +39,6 @@ export async function POST(req, { params }) {
       },
     });
   });
-
   const order = await Order.create({
     owner: params.storeId,
     isPaid: false,

@@ -37,10 +37,9 @@ const productSchema = new mongoose.Schema(
       ref: "Size", // Reference to the Size model
       required: true,
     },
-    colorId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Color", // Reference to the Color model
-      required: true,
+    quantity: {
+      type: Number,
+      default: 1,
     },
     images: {
       type: [Image.schema],

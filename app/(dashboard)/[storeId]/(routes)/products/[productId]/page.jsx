@@ -23,13 +23,8 @@ const ProductPage = async ({ params }) => {
     owner: params.storeId,
   });
 
-  const colors = await Color.find({
-    owner: params.storeId,
-  });
-
   const plainCategories = JSON.parse(JSON.stringify(categories));
   const plainSizes = JSON.parse(JSON.stringify(sizes));
-  const plainColors = JSON.parse(JSON.stringify(colors));
 
 
   return (
@@ -39,7 +34,6 @@ const ProductPage = async ({ params }) => {
           initialData={plainProduct}
           categories={plainCategories}
           sizes={plainSizes}
-          colors={plainColors}
         />
       </div>
     </div>

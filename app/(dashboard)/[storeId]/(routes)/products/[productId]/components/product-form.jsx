@@ -38,8 +38,7 @@ const formSchema = z.object({
   images: z.array(z.object({ url: z.string() })),
   price: z.coerce.number().min(1),
   categoryId: z.string().min(1),
-  colorId: z.array(z.object({ url: z.string() })),
-  sizeId: z.array(z.object({ url: z.string() })),
+  sizeId: z.string(),
   isFeatured: z.boolean().default(false).optional(),
   isArchived: z.boolean().default(false).optional(),
 });
@@ -62,8 +61,7 @@ const ProductForm = ({ initialData, categories, sizes, colors }) => {
       images: [],
       price: "0",
       categoryId: "",
-      colorId: [],
-      sizeId: [],
+      sizeId: "",
       isFeatured: false,
       isArchived: false,
     },
@@ -251,38 +249,6 @@ const ProductForm = ({ initialData, categories, sizes, colors }) => {
                       {sizes.map((size) => (
                         <SelectItem key={size._id} value={size._id}>
                           {size.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="colorId"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Color</FormLabel>
-                  <Select
-                    disabled={loading}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue
-                          defaultValue={field.value}
-                          placeholder="Select a color"
-                        />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {colors.map((color) => (
-                        <SelectItem key={color._id} value={color._id}>
-                          {color.name}
                         </SelectItem>
                       ))}
                     </SelectContent>
