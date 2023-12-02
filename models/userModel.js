@@ -13,6 +13,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Store", // Reference to the User model
+      required: true,
+    },
     items: {
       type: Array,
       required: true,

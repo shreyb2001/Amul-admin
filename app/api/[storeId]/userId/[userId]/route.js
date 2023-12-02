@@ -6,10 +6,14 @@ export async function GET(req, { params }) {
   await dbConnect();
 
   try {
+    if (!params.storeId)
+      return new NextResponse("Store ID is required", { status: 400 });
+
     if (!params.userId)
       return new NextResponse("User ID is required", { status: 400 });
 
     const userOrders = await User.find({
+      owner: params.storeId,
       email: params.userId,
     });
 
