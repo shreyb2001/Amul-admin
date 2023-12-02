@@ -4,7 +4,6 @@ import User from "../../../../../models/userModel";
 
 export async function GET(req, { params }) {
   await dbConnect();
-  console.log(params);
 
   try {
     if (!params.userId)

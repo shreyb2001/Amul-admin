@@ -28,9 +28,10 @@ export async function POST(req, { params }) {
 
   const line_items = [];
 
-  products.forEach((product) => {
+  items.forEach((product) => {
+    console.log(product)
     line_items.push({
-      quantity: 1,
+      quantity: product.quantity,
       price_data: {
         currency: "INR",
         product_data: {
@@ -51,8 +52,6 @@ export async function POST(req, { params }) {
     email: data.user.email,
     items,
   });
-
-  console.log(user);
 
   const session = await stripe.checkout.sessions.create({
     line_items,
