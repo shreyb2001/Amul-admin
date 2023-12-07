@@ -11,8 +11,8 @@ export const columns = [
     header: "Name",
   },
   {
-    accessorKey: "isArchived",
-    header: "Archived",
+    accessorKey: "stock",
+    header: "Stock",
   },
   {
     accessorKey: "isFeatured",

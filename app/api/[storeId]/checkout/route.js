@@ -26,8 +26,6 @@ export async function POST(req, { params }) {
     _id: { $in: productIds },
   });
 
-  console.log(items);
-
   for (const item of items) {
     let updatedStock = item.stock - item.quantity;
     const product = await Product.findOneAndUpdate(

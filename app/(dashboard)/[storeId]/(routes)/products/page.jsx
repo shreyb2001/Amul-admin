@@ -23,6 +23,7 @@ const ProductsPage = async ({ params }) => {
     price: item.price,
     category: item.categoryId.name,
     size: item.sizeId.name,
+    stock: item.stock,
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }));
 
@@ -31,9 +32,7 @@ const ProductsPage = async ({ params }) => {
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <ProductClient
-          data={plainProducts}
-        />
+        <ProductClient data={plainProducts} />
       </div>
     </div>
   );
