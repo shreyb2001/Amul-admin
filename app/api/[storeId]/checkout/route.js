@@ -1,7 +1,6 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 import Order from "../../../../models/orderModel";
-import User from "../../../../models/userModel";
 import Product from "../../../../models/productModel";
 import { stripe } from "../../../../lib/stripe";
 
@@ -55,15 +54,8 @@ export async function POST(req, { params }) {
   const order = await Order.create({
     owner: params.storeId,
     isPaid: false,
-    orderItems: products,
+    orderItems: items,
     email: data.user.email,
-  });
-
-  const user = await User.create({
-    name: data.user.name,
-    email: data.user.email,
-    items,
-    owner: params.storeId,
   });
 
   const session = await stripe.checkout.sessions.create({

@@ -27,10 +27,6 @@ const orderSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
-    quantity: {
-      type: Number,
-      default: 1,
-    },
   },
   {
     timestamps: true,
