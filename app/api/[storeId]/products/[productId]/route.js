@@ -36,10 +36,11 @@ export async function PATCH(req, { params }) {
       categoryId,
       sizeId,
       images,
+      description,
+      stock,
       isFeatured,
       isArchived,
     } = body;
-
 
     if (!userId) return new NextResponse("Unauthenticated", { status: 401 });
 
@@ -80,6 +81,8 @@ export async function PATCH(req, { params }) {
         sizeId,
         isFeatured,
         isArchived,
+        description,
+        stock,
         images,
       }
     );

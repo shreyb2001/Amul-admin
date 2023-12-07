@@ -19,6 +19,8 @@ export async function POST(req, { params }) {
       images,
       isFeatured,
       isArchived,
+      description,
+      stock,
     } = body;
 
     if (!userId) return new NextResponse("Unauthenticated", { status: 401 });
@@ -57,6 +59,8 @@ export async function POST(req, { params }) {
       isFeatured,
       isArchived,
       images,
+      stock,
+      description,
     });
 
     return NextResponse.json(product);
@@ -85,7 +89,6 @@ export async function GET(req, { params }) {
     if (categoryId !== undefined) {
       query.categoryId = categoryId;
     }
-
 
     if (sizeId !== undefined) {
       query.sizeId = sizeId;

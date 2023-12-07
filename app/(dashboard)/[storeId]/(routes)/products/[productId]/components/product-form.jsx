@@ -39,6 +39,8 @@ const formSchema = z.object({
   price: z.coerce.number().min(1),
   categoryId: z.string().min(1),
   sizeId: z.string(),
+  description: z.string().default("Product Description"),
+  stock: z.coerce.number().min(1),
   isFeatured: z.boolean().default(false).optional(),
   isArchived: z.boolean().default(false).optional(),
 });
@@ -62,6 +64,8 @@ const ProductForm = ({ initialData, categories, sizes, colors }) => {
       price: "0",
       categoryId: "",
       sizeId: "",
+      description: "",
+      stock: "1",
       isFeatured: false,
       isArchived: false,
     },
@@ -69,6 +73,7 @@ const ProductForm = ({ initialData, categories, sizes, colors }) => {
 
   const onSubmit = async (data) => {
     const uploadData = { ...data, owner: params.storeId };
+    console.log(uploadData);
     try {
       setLoading(true);
       if (initialData) {
@@ -185,6 +190,41 @@ const ProductForm = ({ initialData, categories, sizes, colors }) => {
                     <Input
                       disabled={loading}
                       placeholder="9.99"
+                      {...field}
+                      type="number"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Description</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Product description"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="stock"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Stock</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="1"
                       {...field}
                       type="number"
                     />

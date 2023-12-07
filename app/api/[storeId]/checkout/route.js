@@ -1,8 +1,8 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
-import Product from "../../../../models/productModel";
 import Order from "../../../../models/orderModel";
 import User from "../../../../models/userModel";
+import Product from "../../../../models/productModel";
 import { stripe } from "../../../../lib/stripe";
 
 const corsHeaders = {
@@ -26,6 +26,20 @@ export async function POST(req, { params }) {
     _id: { $in: productIds },
   });
 
+  console.log(items);
+
+  for (const item of items) {
+    let updatedStock = item.stock - item.quantity;
+    const product = await Product.findOneAndUpdate(
+      {
+        _id: item._id,
+      },
+      {
+        stock: updatedStock,
+      }
+    );
+  }
+
   const line_items = [];
 
   items.forEach((product) => {
@@ -44,6 +58,7 @@ export async function POST(req, { params }) {
     owner: params.storeId,
     isPaid: false,
     orderItems: products,
+    email: data.user.email,
   });
 
   const user = await User.create({

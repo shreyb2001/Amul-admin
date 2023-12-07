@@ -45,6 +45,14 @@ const productSchema = new mongoose.Schema(
       type: [Image.schema],
       required: true,
     },
+    description: {
+      type: String,
+      default: "Product description",
+    },
+    stock: {
+      type: Number,
+      default: 1,
+    },
   },
   {
     timestamps: true,

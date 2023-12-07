@@ -11,6 +11,10 @@ const orderSchema = new mongoose.Schema(
       ref: "Store", // Reference to the User model
       required: true,
     },
+    email: {
+      type: String,
+      required: true,
+    },
     phone: {
       type: String,
       default: "+91-XXXXXXXXXX",
