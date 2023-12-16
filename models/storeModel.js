@@ -5,7 +5,6 @@ import mongoose from "mongoose";
 const storeSchema = new mongoose.Schema(
   {
     // Define your schema here
-
     name: {
       type: String,
       required: true,
@@ -14,6 +13,10 @@ const storeSchema = new mongoose.Schema(
     userId: {
       type: String,
       required: true,
+    },
+    storeUrl: {
+      type: String,
+      default: "http://localhost:3001",
     },
   },
   {
